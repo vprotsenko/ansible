@@ -1,0 +1,22 @@
+---
+- hosts: node
+  tasks :
+  - name : install aws cli
+    apt: pkg=awscli update_cache=yes state=installed
+
+  - name: Creates directory
+    file: path=/home/v/.aws/ state=directory
+
+  - copy:
+      src: /home/v/.aws/credentials
+      dest: /home/v/.aws/credentials
+      owner: v
+      group: v
+      mode: 0644
+
+  - copy:
+      src: /home/v/.aws/config
+      dest: /home/v/.aws/config
+      owner: v
+      group: v
+      mode: 0644

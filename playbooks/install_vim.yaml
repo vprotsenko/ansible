@@ -1,0 +1,5 @@
+---
+- hosts: node
+  tasks :
+  - name : install vim
+    apt: pkg=vim update_cache=yes state=installed
